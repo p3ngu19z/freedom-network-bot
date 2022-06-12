@@ -30,3 +30,6 @@ python-telegram-bot
 
 # monitoring
 # sentry-sdk
+
+# VPN
+python-digitalocean

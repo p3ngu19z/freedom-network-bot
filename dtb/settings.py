@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # local apps
     'tgbot.apps.TgbotConfig',
     'arcgis',
+    'vpn'
 ]
 
 MIDDLEWARE = [
@@ -161,6 +162,9 @@ if TELEGRAM_TOKEN is None:
     sys.exit(1)
 
 TELEGRAM_LOGS_CHAT_ID = os.getenv("TELEGRAM_LOGS_CHAT_ID", default=None)
+
+DONATE_BANK_CARD = os.getenv("DONATE_BANK_CARD", default=None)
+DONATE_MONOBANK_URL = os.getenv("DONATE_MONOBANK_URL", default=None)
 
 # -----> SENTRY
 # import sentry_sdk
