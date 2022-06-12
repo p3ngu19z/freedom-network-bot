@@ -32,4 +32,5 @@ python-telegram-bot
 # sentry-sdk
 
 # VPN
+outline-vpn-api
 python-digitalocean
