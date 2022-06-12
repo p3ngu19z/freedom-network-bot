@@ -3,7 +3,7 @@ import logging
 from django.views import View
 from django.http import JsonResponse
 
-from dtb.settings import DEBUG
+from dtb.settings import DEBUG, DISABLE_CELERY
 from tgbot.dispatcher import process_telegram_event
 
 logger = logging.getLogger(__name__)
@@ -17,7 +17,7 @@ class TelegramBotWebhookView(View):
     # WARNING: if fail - Telegram webhook will be delivered again. 
     # Can be fixed with async celery task execution
     def post(self, request, *args, **kwargs):
-        if DEBUG:
+        if DEBUG or DISABLE_CELERY:
             process_telegram_event(json.loads(request.body))
         else:  
             # Process Telegram event in Celery worker (async)

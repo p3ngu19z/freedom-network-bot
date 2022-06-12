@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from dtb.settings import DEBUG
+from dtb.settings import DEBUG, DISABLE_CELERY
 
 from tgbot.models import Location
 from tgbot.models import User
@@ -30,7 +30,7 @@ class UserAdmin(admin.ModelAdmin):
         if 'apply' in request.POST:
             broadcast_message_text = request.POST["broadcast_text"]
 
-            if DEBUG:  # for test / debug purposes - run in same thread
+            if DEBUG or DISABLE_CELERY:  # for test / debug purposes - run in same thread
                 for user_id in user_ids:
                     _send_message(
                         user_id=user_id,

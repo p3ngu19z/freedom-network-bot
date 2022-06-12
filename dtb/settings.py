@@ -141,6 +141,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 
 # -----> CELERY
+DISABLE_CELERY = True
 # REDIS_URL = os.getenv('REDIS_URL', 'redis://redis:6379')
 # BROKER_URL = REDIS_URL
 # CELERY_BROKER_URL = REDIS_URL
