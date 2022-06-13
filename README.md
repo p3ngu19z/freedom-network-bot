@@ -1,5 +1,5 @@
 # freedom-network-bot
-Telegram bot for provide VPN based on [OutlineVPN](https://getoutline.org/)
+Telegram bot for providing VPN based on [OutlineVPN](https://getoutline.org/)
 
 ### [t.me/freedom_network_bot](https://t.me/freedom_network_bot)
 
