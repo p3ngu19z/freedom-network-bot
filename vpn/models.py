@@ -23,7 +23,9 @@ class OutlineKey(models.Model):
 
     @property
     def url(self):
-        return f"https://s3.amazonaws.com/outline-vpn/invite.html#/uk/invite/{urllib.parse.quote(self.access_url)}"
+        server_name = "#Freedom Network UA"
+        outline_invite_url = "https://s3.amazonaws.com/outline-vpn/invite.html#/uk/invite/"
+        return f"{outline_invite_url}{urllib.parse.quote(self.access_url + server_name)}"
 
     @classmethod
     def create(cls, user, server):
