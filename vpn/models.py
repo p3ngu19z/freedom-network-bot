@@ -2,6 +2,7 @@ from django.db import models
 from tgbot.models import User
 from outline_vpn.outline_vpn import OutlineVPN
 import urllib.parse
+from vpn.constatns import *
 
 
 class OutlineServer(models.Model):
@@ -23,15 +24,14 @@ class OutlineKey(models.Model):
 
     @property
     def url(self):
-        server_name = "#Freedom Network UA"
-        outline_invite_url = "https://s3.amazonaws.com/outline-vpn/invite.html#/uk/invite/"
-        return f"{outline_invite_url}{urllib.parse.quote(self.access_url + server_name)}"
+        return f"{OUTLINE_INVITE_URL}{urllib.parse.quote(self.access_url + SERVER_NAME)}"
 
     @classmethod
     def create(cls, user, server):
         client = OutlineVPN(api_url=server.api_url)
         k = client.create_key()
         client.rename_key(k.key_id, str(user.user_id))
+        client.add_data_limit(k.key_id, DATA_LIMIT)
         o_key = OutlineKey(
             key_id=k.key_id,
             name=str(user.user_id),
