@@ -1,3 +1,3 @@
-DATA_LIMIT = 1024 * 1024 * 1024 * 100  # 100GB in bytes
+DATA_LIMIT = 1000 * 1000 * 1000 * 100  # 100GB in bytes
 SERVER_NAME = "#Freedom Network UA"
 OUTLINE_INVITE_URL = "https://s3.amazonaws.com/outline-vpn/invite.html#/uk/invite/"
