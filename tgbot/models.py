@@ -29,6 +29,8 @@ class User(CreateUpdateTracker):
 
     is_admin = models.BooleanField(default=False)
 
+    is_verified = models.BooleanField(default=False)
+
     objects = GetOrNoneManager()  # user = User.objects.get_or_none(user_id=<some_id>)
     admins = AdminUserManager()  # User.admins.all()
 

@@ -15,7 +15,7 @@ from tgbot.handlers.broadcast_message.utils import _send_message
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = [
-        'user_id', 'username', 'first_name', 'last_name', 
+        'user_id', 'username', 'first_name', 'last_name', 'is_verified',
         'language_code', 'deep_link',
         'created_at', 'updated_at', "is_blocked_bot",
     ]

@@ -9,6 +9,10 @@ class OutlineServer(models.Model):
     api_url = models.CharField(max_length=256)
     cert_sha256 = models.CharField(max_length=256)
 
+    is_deleted = models.BooleanField(default=False)
+    transferred_bytes = models.BigIntegerField(default=0)
+    limit_bytes = models.BigIntegerField(default=DEFAULT_SERVER_DATA_LIMIT)
+
 
 class OutlineKey(models.Model):
     key_id = models.IntegerField()
@@ -19,6 +23,8 @@ class OutlineKey(models.Model):
     access_url = models.CharField(max_length=256)
     used_bytes = models.BigIntegerField()
 
+    is_deleted = models.BooleanField(default=False)
+
     server = models.ForeignKey(OutlineServer, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -28,7 +34,7 @@ class OutlineKey(models.Model):
 
     @classmethod
     def create(cls, user, server):
-        client = OutlineVPN(api_url=server.api_url)
+        client = OutlineVPN(api_url=server.api_url, cert_sha256=server.cert_sha256)
         k = client.create_key()
         client.rename_key(k.key_id, str(user.user_id))
         client.add_data_limit(k.key_id, DATA_LIMIT)
@@ -47,7 +53,8 @@ class OutlineKey(models.Model):
         return o_key
 
     def remove(self):
-        client = OutlineVPN(api_url=self.server.api_url)
+        client = OutlineVPN(api_url=self.server.api_url, cert_sha256=self.server.cert_sha256)
         client.delete_key(self.key_id)
-        self.delete()
+        self.is_deleted = True
+        self.save()
         return True

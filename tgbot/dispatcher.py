@@ -34,6 +34,8 @@ def setup_dispatcher(dp):
     dp.add_handler(CommandHandler("replace", onboarding_handlers.command_replace_key))
     dp.add_handler(CommandHandler("donate", onboarding_handlers.command_donate))
 
+    dp.add_handler(MessageHandler(Filters.contact, onboarding_handlers.contact_callback))
+
     # admin commands
     dp.add_handler(CommandHandler("stats", admin_handlers.stats))
 

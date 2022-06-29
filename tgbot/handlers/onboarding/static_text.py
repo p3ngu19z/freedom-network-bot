@@ -9,3 +9,8 @@ donate_text = "Кожна ваша гривня допоможе в бороть
 monobank_text = "Monobank"
 key_text = "Для підключення VPN натисніть на кнопку і дотримуйтесь інструкцій:"
 replace_key_text = "Сервер успішно замінено, для підключення натисніть на кнопку:"
+phone_number_request = "Поділіться вашим номером телефону щоб я упевнився що ви справді Українець\n" \
+                       "Ваш номер телефону не буде збережено"
+send_phone_button_text = "Поділитись номером"
+invalid_phone_number = "This bot only for Ukrainians"
+account_successfully_verified = "Дякуємо, ваш номер успішно підтверджений"
