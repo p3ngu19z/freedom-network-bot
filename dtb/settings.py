@@ -30,7 +30,7 @@ else:
 
 ALLOWED_HOSTS = ["*",]  # since Telegram uses a lot of IPs for webhooks
 
-CSRF_TRUSTED_ORIGINS = [os.environ.get("WEBSITE_HOSTNAME", default=False)]
+CSRF_TRUSTED_ORIGINS = [f'https://{os.environ.get("WEBSITE_HOSTNAME", default=False)}']
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
