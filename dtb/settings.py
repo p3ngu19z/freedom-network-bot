@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*",]  # since Telegram uses a lot of IPs for webhooks
 
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
